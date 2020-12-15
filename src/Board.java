@@ -9,7 +9,8 @@ public class Board {
 
     public void printBoard() {
         System.out.println("-----------------------------");
-        for (char[] row : this.board) {
+        for (int r = 5; r >= 0; r--) {
+            char[] row = this.board[r];
             System.out.println("| " + row[0] + " | " + row[1] + " | " + row[2] + " | " + row[3] + " | " + row[4] + " | "
                     + row[5] + " | " + row[6] + " |");
 
@@ -21,12 +22,12 @@ public class Board {
         System.out.println("Enter move spot for " + player + " >> ");
         int moveSpot = scanner.nextInt() - 1;
 
-        if (this.board[5][moveSpot] != ' ') {
-            System.out.println("Spot is full! try another one.");
+        if (moveSpot > 6 || moveSpot < 0 || this.board[5][moveSpot] != ' ') {
+            System.out.println("Spot is full! or the move is illegal. try another one.");
             turn(player); // restart the method for another try
         }
 
-        for (int i = 0; i <= 6; i++) {
+        for (int i = 0; i <= 5; i++) {
             char[] row = this.board[i];
 
             if (row[moveSpot] == ' ') {
@@ -38,8 +39,8 @@ public class Board {
     }
 
     public char checkWin() {
-        for (int r = 0; r <= 6; r++) {
-            for (int s = 0; s <= 7; s++) {
+        for (int r = 0; r < 6; r++) {
+            for (int s = 0; s < 7; s++) {
                 char currentSlot = this.board[r][s];
 
                 try {
