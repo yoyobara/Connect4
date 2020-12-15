@@ -19,22 +19,25 @@ public class Board {
     }
 
     public void turn(char player) {
-        System.out.println("Enter move spot for " + player + " >> ");
-        int moveSpot = scanner.nextInt() - 1;
+        while (true) {
+            System.out.println("Enter move spot for " + player + " >> ");
+            int moveSpot = scanner.nextInt() - 1;
 
-        if (moveSpot > 6 || moveSpot < 0 || this.board[5][moveSpot] != ' ') {
-            System.out.println("Spot is full! or the move is illegal. try another one.");
-            turn(player); // restart the method for another try
-        }
-
-        for (int i = 0; i <= 5; i++) {
-            char[] row = this.board[i];
-
-            if (row[moveSpot] == ' ') {
-                this.board[i][moveSpot] = player;
-                break;
+            if (moveSpot > 6 || moveSpot < 0 || this.board[5][moveSpot] != ' ') {
+                System.out.println("Spot is full! or the move is illegal. try another one.");
+                continue;
             }
 
+            for (int i = 0; i <= 5; i++) {
+                char[] row = this.board[i];
+
+                if (row[moveSpot] == ' ') {
+                    this.board[i][moveSpot] = player;
+                    break;
+                }
+
+            }
+            break;
         }
     }
 
