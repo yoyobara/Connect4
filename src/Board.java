@@ -16,6 +16,7 @@ public class Board {
 
             System.out.println("-----------------------------");
         }
+        System.out.println("  1   2   3   4   5   6   7  \n");
     }
 
     public void turn(char player) {
