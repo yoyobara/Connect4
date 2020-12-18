@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import Helpers.Colors;
 
 public class App {
     public static void main(String[] args) {
@@ -7,14 +8,14 @@ public class App {
 
         cls();
         while (newGame) {
-            char game = newGame();
+            int game = newGame();
 
-            if (game == 'X') {
-                System.out.println("\nX won the game!!!");
-            } else if (game == 'O') {
-                System.out.println("\nO won the game!!!");
+            if (game == 1) {
+                System.out.println("\n" + Colors.BLUE_BOLD + "BLUE won the game!!!" + Colors.RESET);
+            } else if (game == 2) {
+                System.out.println("\n" + Colors.RED_BOLD + "RED won the game!!!" + Colors.RESET);
             } else {
-                System.out.println("\nDraw!!!");
+                System.out.println("\n" + Colors.PURPLE_BOLD + "Draw!!!" + Colors.RESET);
             }
 
             System.out.print("\nPlay again? (y/n) >> ");
@@ -30,21 +31,23 @@ public class App {
         System.out.flush();
     }
 
-    public static char newGame() {
+    public static int newGame() {
         Board board = new Board();
-        char turn = 'X';
+        int turn = 1;
 
         while (board.checkWin() == 'n') {
             board.printBoard();
             board.turn(turn);
 
-            if (turn == 'X') {
-                turn = 'O';
+            if (turn == 1) {
+                turn = 2;
             } else {
-                turn = 'X';
+                turn = 1;
             }
             cls();
         }
+
+        board.printBoard();
 
         return board.checkWin();
     }
