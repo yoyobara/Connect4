@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import Helpers.Colors;
 
 public class Board {
     Scanner scanner = new Scanner(System.in);
@@ -11,8 +12,10 @@ public class Board {
         System.out.println("-----------------------------");
         for (int r = 5; r >= 0; r--) {
             char[] row = this.board[r];
-            System.out.println("| " + row[0] + " | " + row[1] + " | " + row[2] + " | " + row[3] + " | " + row[4] + " | "
-                    + row[5] + " | " + row[6] + " |");
+            System.out.println("| " + Colors.coloredSymbol(row[0]) + " | " + Colors.coloredSymbol(row[1]) + " | "
+                    + Colors.coloredSymbol(row[2]) + " | " + Colors.coloredSymbol(row[3]) + " | "
+                    + Colors.coloredSymbol(row[4]) + " | " + Colors.coloredSymbol(row[5]) + " | "
+                    + Colors.coloredSymbol(row[6]) + " |");
 
             System.out.println("-----------------------------");
         }
